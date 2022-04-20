@@ -33,4 +33,13 @@ But i want to explore the luxury to not spend time configuring an environment.
 
 ## Caveats
 
-- WIP
+So far, i see plenty of advantages using it to setup a production environment.
+But for day to day development i have concerns.
+
+- volumes can be tricky. we might need to expose volumes to avoid loss of data,
+  but at the same time volume itself can be destructive.
+- user permissions are a real issue. Even being rootless and using random uids
+  and gids for their containerized files, it still be a problem when doing
+  modifications form outside of the container.
+
+Seeing a lot of material about uid/gid remapping, but no elegant solution yet.
