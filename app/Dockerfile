@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/openjdk-11
 
-ADD ./ /app
+ADD . /app
 
 WORKDIR /app
 

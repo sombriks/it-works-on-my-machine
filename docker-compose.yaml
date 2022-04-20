@@ -2,20 +2,29 @@ version: '3'
 services:
   web:
     build: ./web
-    expose:
-      - 3000
+    ports:
+      - 3000:3000
+      - 5050:5050
     depends_on:
       - app
       - db
+    links:
+      - app
+    network_mode: "host"
   app:
     build: ./app
-    expose:
-      - 8080
+    ports:
+      - 8080:8080
     depends_on:
       - db
+    links:
+      - db
+    network_mode: "host"
   db:
     image: postgres
-    expose:
-      - 5432
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
     volumes:
-      - .data:/var/lib/postgresql/data:rw
+      - .data:/var/lib/postgresql/data:Z

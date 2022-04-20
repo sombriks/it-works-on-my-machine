@@ -5,8 +5,9 @@ ADD . /web
 WORKDIR /web
 
 EXPOSE 3000
+EXPOSE 5050
 
-CMD [ "npm", "install" ]
+RUN [ "npm", "install" ]
 
 # this is a development machine
 ENTRYPOINT [ "npm", "run", "dev" ]
