@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: ./web
+    depends_on:
+      - app
+      - db
+  app:
+    build: ./app
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - .data:/var/lib/postgresql/data:rw
