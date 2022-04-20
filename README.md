@@ -30,3 +30,7 @@ Also will need java-jdk 11 and node 14 with npm installed.
 One could simply install everything by hand on bare metal and call it a day.
 
 But i want to explore the luxury to not spend time configuring an environment.
+
+## Caveats
+
+- WIP
