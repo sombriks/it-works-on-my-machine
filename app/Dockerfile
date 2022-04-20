@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/openjdk-11
+FROM docker.io/adoptopenjdk/openjdk11:alpine
 
 ADD . /app
 
@@ -6,5 +6,6 @@ WORKDIR /app
 
 EXPOSE 8080
 
-# this is a development container
-ENTRYPOINT ["/app/gradlew" "bootRun"] 
+RUN ["/app/gradlew", "build" ]
+
+ENTRYPOINT ["java", "-jar" "/app/build/libs/app-0.0.1-SNAPSHOT.jar"] 
