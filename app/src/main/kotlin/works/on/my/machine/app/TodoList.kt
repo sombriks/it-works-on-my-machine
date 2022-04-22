@@ -1,13 +1,10 @@
 package works.on.my.machine.app
 
 import java.time.LocalDateTime
-import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.OneToMany
 
 @Entity
 data class TodoList(

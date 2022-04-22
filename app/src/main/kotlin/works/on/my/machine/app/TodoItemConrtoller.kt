@@ -1,6 +1,5 @@
 package works.on.my.machine.app
 
-import org.springframework.data.domain.Example
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
