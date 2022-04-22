@@ -4,4 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface TodoItemRepository: JpaRepository<TodoItem, Long>
+interface TodoItemRepository: JpaRepository<TodoItem, Long> {
+    fun findByTodoListId(todoListId: Long): List<TodoItem>
+}

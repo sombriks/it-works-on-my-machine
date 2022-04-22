@@ -16,8 +16,5 @@ data class TodoList(
     var id: Long? = null,
     var title: String? = null,
     var createdAt: LocalDateTime? = LocalDateTime.now(),
-    var updatedAt: LocalDateTime? = null,
-    @OneToMany(cascade = [CascadeType.ALL])
-    @JoinColumn(name = "todo_list_id")
-    var items: List<TodoItem>?
+    var updatedAt: LocalDateTime? = null
 )
