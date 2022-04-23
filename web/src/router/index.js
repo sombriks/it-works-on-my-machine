@@ -10,11 +10,13 @@ const router = createRouter({
       path: "/",
       name: "list",
       component: ListTodos,
+      props: true,
     },
     {
       path: "/todo/:id",
       name: "detail",
       component: DetailTodo,
+      props: true,
     },
   ],
 });
