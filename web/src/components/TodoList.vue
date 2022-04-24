@@ -3,14 +3,23 @@
     <div class="title">{{ todo.title }}</div>
     <ul v-if="items">
       <li v-for="item in items" :key="item.id">
-        <TodoItem :item="item"/>
+        <TodoItem :item="item" @complete="onComplete" />
       </li>
     </ul>
   </div>
 </template>
 <script setup>
 import TodoItem from "@/components/TodoItem.vue";
+
+import { useTodoListStore } from "@/stores/todoListStore.js";
+
 defineProps(["todo", "items"]);
+
+const todoStore = useTodoListStore();
+
+const onComplete = (e) => {
+  todoStore.updateItem({ ...e.item, completed: e.checked });
+};
 </script>
 <style scoped>
 .todo {

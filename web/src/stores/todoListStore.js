@@ -22,11 +22,24 @@ export const useTodoListStore = defineStore({
       this.getItems(this.todo.id);
     },
     async getItems(id) {
+      this.items = [];
       const response = await fetch(
         `${import.meta.env.VITE_BASE_API}/todo/${id}/items`
       );
       const result = await response.json();
       this.items = result;
+    },
+    async updateItem(item) {
+      await fetch(
+        `${import.meta.env.VITE_BASE_API}/todo/${item.todoListId}/item`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "PUT",
+          body: JSON.stringify(item),
+        }
+      );
     },
   },
 });

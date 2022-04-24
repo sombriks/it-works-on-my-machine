@@ -3,6 +3,7 @@ package works.on.my.machine.app
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
+import java.time.LocalDateTime
 
 @CrossOrigin
 @RestController
@@ -34,6 +35,7 @@ class TodoItemController(var itemRepository: TodoItemRepository) {
             )
         }
         item.todoListId = id
+        item.updatedAt = LocalDateTime.now()
         itemRepository.save(item)
         return item
     }
