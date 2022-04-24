@@ -6,4 +6,6 @@ WORKDIR /app
 
 EXPOSE 8080
 
-ENTRYPOINT ["/app/gradlew", "bootRun" ]
+RUN ["/app/gradlew", "build"]
+
+ENTRYPOINT ["/app/gradlew", "bootRun"]
