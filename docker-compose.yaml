@@ -2,29 +2,33 @@ version: '3'
 services:
   web:
     build: ./web
+    environment:
+      - VITE_BASE_API=${vite_base_api}
+    volumes:
+      - ./web:/web:z
     ports:
       - 3000:3000
       - 5050:5050
+    network_mode: "host"
+    links:
+      - app
     depends_on:
       - app
       - db
-    links:
-      - app
-    network_mode: "host"
-    environment:
-      - VITE_BASE_API=${vite_base_api}
   app:
     build: ./app
-    ports:
-      - 8080:8080
     environment:
       - GRADLE_OPTS=${gradle_opts}
       - spring_profiles_active=${spring_profiles_active}
-    depends_on:
-      - db
+    volumes:
+      - ./app:/app:z
+    ports:
+      - 8080:8080
+    network_mode: "host"
     links:
       - db
-    network_mode: "host"
+    depends_on:
+      - db
   db:
     image: postgres
     ports:
@@ -33,5 +37,5 @@ services:
       - POSTGRES_PASSWORD=${postgres_password}
       - POSTGRES_DB=works_on_my_machine
     volumes:
-      - .data:/var/lib/postgresql/data:Z
+      - .data:/var/lib/postgresql/data:z
     

@@ -1,11 +1,7 @@
 FROM docker.io/adoptopenjdk/openjdk11:alpine
-
 ADD . /app
-
+VOLUME /app
 WORKDIR /app
-
 EXPOSE 8080
-
-RUN ["/app/gradlew", "build"]
-
-ENTRYPOINT ["/app/gradlew", "bootRun"]
+# this is a development machine
+ENTRYPOINT /app/gradlew --no-daemon --watch-fs build bootRun
