@@ -31,6 +31,22 @@ One could simply install everything by hand on bare metal and call it a day.
 
 But I want to explore the luxury to not spend time configuring an environment.
 
+## Tested hosts
+
+So far, it works on:
+
+- fedora 35 with podman-compose
+- kde neon (ubuntu) with official docker-compose
+
+It fails on:
+
+- windows 10 with docker-compose
+- mac-book air (2021) with m1 chip with docker-compose
+- mac-book air (2021) with m1 chip with podman-compose from brew
+
+Containers are not java. There is no _write once, run everywhere_ here. It is
+important to create an image supported by the host, otherwise it will not work.
+
 ## Caveats
 
 So far, I see plenty of advantages using it to set up a production environment.
@@ -44,9 +60,13 @@ But for day to day development I have concerns.
   workspace somewhere else. unless you get the volume configuration right, take
   care to not lose precious data.
 - Build the kotlin project image with gradle is surprisingly slow.
-- The --watch-fs on gradle simply doesn't work
-- the network_mode can be tricky, app sees db correctly, but web still needs to
-  hit localhost to find app
+- The --watch-fs on gradle simply doesn't work.
+- The network_mode can be tricky. The app sees db correctly, but web still needs
+  to hit localhost to find app.
+- Running it with `docker-compose` instead of `podman-compose`, your server
+  shall never user links and network_mode together. In our example, *db* and
+  *app* can use links, but *web* goes with network_mode: "host" in order to work
+  properly.
 
 ~~Seeing a lot of material about uid/gid remapping, but no elegant solution
 yet.~~ A good solution came with correct selinux flag.

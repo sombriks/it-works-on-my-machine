@@ -10,8 +10,6 @@ services:
       - 3000:3000
       - 5050:5050
     network_mode: "host"
-    links:
-      - app
     depends_on:
       - app
       - db
@@ -24,7 +22,6 @@ services:
       - ./app:/app:z
     ports:
       - 8080:8080
-    network_mode: "host"
     links:
       - db
     depends_on:
