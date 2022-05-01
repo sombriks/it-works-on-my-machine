@@ -64,8 +64,8 @@ But for day to day development I have concerns.
 - The network_mode can be tricky. The app sees db correctly, but web still needs
   to hit localhost to find app.
 - Running it with `docker-compose` instead of `podman-compose`, your server
-  shall never user links and network_mode together. In our example, *db* and
-  *app* can use links, but *web* goes with network_mode: "host" in order to work
+  shall never user links and network_mode together. In our example, _db_ and
+  _app_ can use links, but _web_ goes with network_mode: "host" in order to work
   properly.
 
 ~~Seeing a lot of material about uid/gid remapping, but no elegant solution
