@@ -67,6 +67,8 @@ But for day to day development I have concerns.
   shall never user links and network_mode together. In our example, _db_ and
   _app_ can use links, but _web_ goes with network_mode: "host" in order to work
   properly.
+- On windows 10, it says that we can't combine network_mode: "host" with ports
+  mapping. If we remove ports mapping from _web_, we're unable to access it 🤡.
 
 ~~Seeing a lot of material about uid/gid remapping, but no elegant solution
 yet.~~ A good solution came with correct selinux flag.
